@@ -31,9 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CommandHansdlers\OrderCommandHandler.cs" />
-    <Compile Include="Commands\RegisterOrderCommand.cs" />
-    <Compile Include="Commands\RegisterOrderItemCommand.cs" />
+    <Compile Include="Commands\Handlers\CustomerCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\OrderCommandHandler.cs" />
+    <Compile Include="Commands\Results\RegisterCustomerCommandResult.cs" />
+    <Compile Include="Commands\Results\RegisterOrderCommandResult.cs" />
+    <Compile Include="Commands\Inputs\RegisterCustomerCommand.cs" />
+    <Compile Include="Commands\Inputs\RegisterOrderCommand.cs" />
+    <Compile Include="Commands\Inputs\RegisterOrderItemCommand.cs" />
+    <Compile Include="Commands\Inputs\UpdateCustomerCommand.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
@@ -42,6 +47,7 @@
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Services\IEmailService.cs" />
     <Compile Include="ValueObjects\Document.cs" />
     <Compile Include="ValueObjects\Email.cs" />
     <Compile Include="ValueObjects\Name.cs" />

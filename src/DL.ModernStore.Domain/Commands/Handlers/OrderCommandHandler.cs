@@ -1,10 +1,11 @@
-﻿using DL.ModernStore.Domain.Commands;
+﻿using DL.ModernStore.Domain.Commands.Inputs;
+using DL.ModernStore.Domain.Commands.Results;
 using DL.ModernStore.Domain.Entities;
 using DL.ModernStore.Domain.Repositories;
 using DL.ModernStores.Shared.Commands;
 using FluentValidator;
 
-namespace DL.ModernStore.Domain.CommandHansdlers
+namespace DL.ModernStore.Domain.Commands.Handlers
 {
     public class OrderCommandHandler : Notifiable, 
         ICommandHandler<RegisterOrderCommand>
@@ -23,7 +24,7 @@ namespace DL.ModernStore.Domain.CommandHansdlers
         }
 
 
-        public void Handle(RegisterOrderCommand command)
+        public ICommandResult Handle(RegisterOrderCommand command)
         {
             // Instancia o cliente (Lendo do repositorio)
             var customer = _customerRepository.Get(command.Customer);
@@ -42,8 +43,10 @@ namespace DL.ModernStore.Domain.CommandHansdlers
             AddNotifications(order.Notifications);
 
             // Persiste no banco
-            if (order.IsValid())
+            if (IsValid())
                 _orderRepository.Save(order);
+
+            return new RegisterOrderCommandResult(order.Number); 
         }
 
     }

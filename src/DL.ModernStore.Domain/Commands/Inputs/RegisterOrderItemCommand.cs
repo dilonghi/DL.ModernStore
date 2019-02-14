@@ -1,7 +1,7 @@
 ﻿using DL.ModernStores.Shared.Commands;
 using System;
 
-namespace DL.ModernStore.Domain.Commands
+namespace DL.ModernStore.Domain.Commands.Inputs
 {
     public class RegisterOrderItemCommand : ICommand
     {

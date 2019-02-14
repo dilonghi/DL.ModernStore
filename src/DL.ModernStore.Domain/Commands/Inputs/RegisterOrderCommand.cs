@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DL.ModernStore.Domain.Commands
+namespace DL.ModernStore.Domain.Commands.Inputs
 {
     public class RegisterOrderCommand : ICommand
     {

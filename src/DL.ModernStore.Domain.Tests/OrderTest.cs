@@ -11,8 +11,7 @@ namespace DL.ModernStore.Domain.Tests
         private readonly Customer _customer = new Customer(new Name("Diego", "Longhi"), 
                                                             new Document("90909000") ,
                                                             new Email("andrebaltieri@hotmail.com"),
-                                                            null,
-                                                            new User("andrebaltieri", "andrebaltieri"));
+                                                            new User("andrebaltieri", "andrebaltieri", ""));
 
 
         [TestMethod]
