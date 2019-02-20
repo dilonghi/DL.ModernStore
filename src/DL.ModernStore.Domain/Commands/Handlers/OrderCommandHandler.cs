@@ -11,11 +11,11 @@ namespace DL.ModernStore.Domain.Commands.Handlers
         ICommandHandler<RegisterOrderCommand>
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly IProductRepository _productRepository;
+        private readonly ICustomerRepository _productRepository;
         private readonly IOrderRepository _orderRepository;
 
         public OrderCommandHandler(ICustomerRepository customerRepository,
-            IProductRepository productRepository,
+            ICustomerRepository productRepository,
             IOrderRepository orderRepository)
         {
             _customerRepository = customerRepository;

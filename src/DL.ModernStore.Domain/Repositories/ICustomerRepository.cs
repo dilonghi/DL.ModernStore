@@ -1,4 +1,5 @@
-﻿using DL.ModernStore.Domain.Entities;
+﻿using DL.ModernStore.Domain.Commands.Results;
+using DL.ModernStore.Domain.Entities;
 using System;
 
 namespace DL.ModernStore.Domain.Repositories
@@ -6,8 +7,8 @@ namespace DL.ModernStore.Domain.Repositories
     public interface ICustomerRepository 
     {
         Customer Get(Guid id);
-        Customer Get(string document);
-         
+        GetCustomerCommandResult Get(string username);
+
         Customer GetByUserId(Guid id);
         void Update(Customer customer);
 

@@ -5,6 +5,8 @@ namespace DL.ModernStore.Domain.Entities
 {
     public class OrderItem : Entity
     {
+        protected OrderItem() { }
+
         public OrderItem(Product product, int quantity)
         {
             Product = product;

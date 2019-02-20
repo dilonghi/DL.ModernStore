@@ -4,9 +4,7 @@ namespace DL.ModernStore.Domain.Entities
 {
     public class Product : Entity
     {
-        protected Product()
-        {
-        }
+        protected Product() { }
 
         public Product(string title, decimal price, int quantityOnHand, string image)
         {

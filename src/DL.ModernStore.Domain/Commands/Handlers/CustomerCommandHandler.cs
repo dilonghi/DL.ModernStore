@@ -21,37 +21,40 @@ namespace DL.ModernStore.Domain.Commands.Handlers
             _emailService = emailService;
         }
 
-        
+
         public ICommandResult Handle(RegisterCustomerCommand command)
         {
             // Passo 1. Verifica se cliente existe
             if (_customerRepository.DocumentExists(command.Document))
             {
-                AddNotification("Customer", "Cliente não encontrado");
+                AddNotification("Document", "Este Cpf já está em uso!");
                 return null;
             }
 
-            // Passo 2. Gerar o novo clienet
+            // Passo 2. Gerar o novo cliente
             var name = new Name(command.FirstName, command.LastName);
             var email = new Email(command.Email);
             var document = new Document(command.Document);
             var user = new User(command.Username, command.Password, command.ConfirmPassword);
             var customer = new Customer(name, document, email, user);
 
+            // Passo 3. Adicionar as notificacoes
             AddNotifications(name.Notifications);
             AddNotifications(email.Notifications);
             AddNotifications(document.Notifications);
             AddNotifications(user.Notifications);
             AddNotifications(customer.Notifications);
 
-            // Passo 3. Persistir no banco
-            if (IsValid())
-                _customerRepository.Save(customer);
+            if (!IsValid())
+                return null;
 
-            // Passo 4. Enviar email de boas vindas
-            _emailService.Send(customer.Name.ToString(), 
-                customer.Email.Address, 
-                "Bem vindo", 
+            // Passo 4. Persistir no banco
+            _customerRepository.Save(customer);
+
+            // Passo 5. Enviar email de boas vindas
+            _emailService.Send(customer.Name.ToString(),
+                customer.Email.Address,
+                "Bem vindo",
                 "");
 
             // Passo 6. Retornar algo

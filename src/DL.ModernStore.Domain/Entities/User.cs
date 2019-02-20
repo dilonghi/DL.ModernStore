@@ -1,12 +1,13 @@
 ﻿using DL.ModernStores.Shared.Entities;
 using FluentValidator;
-using System;
 using System.Text;
 
 namespace DL.ModernStore.Domain.Entities
 {
     public class User : Entity
     {
+        protected User() { }
+
         public User(string userName, string password, string confirmPassword)
         {
             UserName = userName;

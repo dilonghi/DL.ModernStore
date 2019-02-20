@@ -9,9 +9,7 @@ namespace DL.ModernStore.Domain.Entities
 {
     public class Order : Entity
     {
-        protected Order()
-        {
-        }
+        protected Order() { }
 
         public Order(Customer customer, decimal deliveryFee, decimal discount)
         {
